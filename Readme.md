@@ -36,6 +36,23 @@ En caso de utilizar pipenv, puedes utilizar un fichero .env para guardar las var
 pipenv run startbot
 ```
 
+### Docker
+
+Se ha añadido un fichero Dockerfile para poder crear un contenedor con el Bot; para construir la imagen:
+
+```bash
+docker build -t mkgtwitchbot .
+```
+
+```bash
+docker run --rm --env TOKE=<yourtoken> --env CLIENT_ID=<clientid> --env CHANNELS=<yourchannel> mkgtwitchbot
+```
+Ó Puedes usar un fichero ```.env```
+
+```bash
+docker run --rm --env-file=.env mkgtwitchbot
+```
+
 ## Comandos
 
 Todos los comandos empiezan por el prefijo ```!```. Los comandos disponibles son:
