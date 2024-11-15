@@ -34,6 +34,13 @@ class Bot(commands.Bot):
         await ctx.channel.send(f'Recuerda nuestra nueva Comunidad de Discord: {discord}!')
     
     @commands.command()
+    async def web(self, ctx: commands.Context):
+        with open('redes.json') as f:
+            data = load(f)
+            web = data['web']
+        await ctx.channel.send(f'Visita nuestra web: {web}; donde encontrarás ejemplos e información del canal!')
+
+    @commands.command()
     async def horario(self, ctx: commands.Context):
         await ctx.channel.send(f'Nuestro horario es Miércoles y Viernes a partir de las 16:00 y los especiales los domingos a partir de las 16:30.')
     
