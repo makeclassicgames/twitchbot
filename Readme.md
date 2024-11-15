@@ -61,6 +61,7 @@ Todos los comandos empiezan por el prefijo ```!```. Los comandos disponibles son
 * redes
 * discord
 * especial
+* web
 
 ### Horario
 
@@ -100,3 +101,7 @@ Donde:
 
 * fecha: Indica la fecha del siguiente Stream especial.
 * tema: Indica la descripción de la temática del siguiente Stream especial.
+
+### Web
+
+Muestra información sobre una web del canal. Obtiene los datos desde el fichero ```redes.json```.
