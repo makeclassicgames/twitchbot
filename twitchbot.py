@@ -1,4 +1,5 @@
 from twitchio.ext import commands
+from random import choice
 from os import environ
 from json import load
 
@@ -42,7 +43,7 @@ class Bot(commands.Bot):
 
     @commands.command()
     async def horario(self, ctx: commands.Context):
-        await ctx.channel.send(f'Nuestro horario es Miércoles y Viernes a partir de las 16:00 y los especiales los domingos a partir de las 16:30.')
+        await ctx.channel.send(f'Nuestro horario es Miércoles a las 17:00 y Viernes a partir de las 16:00 y los especiales los domingos a partir de las 16:30.')
     
     @commands.command()
     async def especial(self, ctx: commands.Context):
@@ -61,6 +62,25 @@ class Bot(commands.Bot):
             mastodon = data['mastodon']
             discord = data['discord']
         await ctx.channel.send(f'X: {twitter},\n BSky: {Bsky},\n Mastodon: {mastodon},\n Discord: {discord}')
+    @commands.command()
+    async def sorteo(self, ctx: commands.Context):
+       #if(not ctx.author.is_broadcaster):
+        with open("sorteo.json") as f:
+            data = load(f)
+            fecha = data['fecha']
+            tema = data['tema']
+            descripcion = data['descripcion']
+        await ctx.channel.send(f' {descripcion} el {fecha}. No te lo pierdas!')
+    
+    @commands.command()
+    async def r36s(self, ctx: commands.Context):
+        if ctx.author.is_broadcaster:
+           users= []
+           for user in ctx.channel.chatters:
+                if(user.is_subscriber and not user.is_broadcaster):
+                    users.append(user)
+           await ctx.channel.send(f'El ganador del sorteo es {choice(users).display_name}!')
+ 
 
 bot = Bot()
 bot.run()

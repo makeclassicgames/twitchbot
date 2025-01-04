@@ -1,2 +1,4 @@
 .env
 Pipfile.lock
+oldenv
+twitchbot/

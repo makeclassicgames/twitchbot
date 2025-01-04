@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 twitchio = "*"
+typing_extensions = "*"
 
 [dev-packages]
 
